@@ -74,7 +74,7 @@
 				float3 normal = normalize(i.worldNormal);
 				float NdotL = dot(_WorldSpaceLightPos0, normal);
 				float shadow = SHADOW_ATTENUATION(i);
-				float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
+				float lightIntensity = smoothstep(0, 0.5, NdotL * shadow);
 
 				float4 light = lightIntensity * _LightColor0;
 
