@@ -32,25 +32,27 @@ public class Player : MonoBehaviour
     {
         Vector3 moveDirection = Vector3.zero;
 
-        if (_playerInput.TryGetUserInput(KeyCode.W, out UserInput userInput))
-        {
-            if (userInput.UserInputState == UserInputStateType.DOWN)
-            {
-                moveDirection += playerCamera.transform.forward;
-            }
-        }
+        //if (_playerInput.TryGetUserInput(KeyCode.W, out UserInput userInput))
+        //{
+        //    if (userInput.UserInputState == UserInputStateType.DOWN)
+        //    {
+        //        moveDirection += playerCamera.transform.forward;
+        //    }
+        //}
+
+        if (Input.GetKey(KeyCode.W)) moveDirection += playerCamera.transform.forward;
         if (Input.GetKey(KeyCode.S)) moveDirection += -playerCamera.transform.forward;
         if (Input.GetKey(KeyCode.A)) moveDirection += -playerCamera.transform.right;
         if (Input.GetKey(KeyCode.D)) moveDirection += playerCamera.transform.right;
 
         moveDirection.y = 0f;
-        transform.position += moveDirection.normalized * 10 * Time.deltaTime;
+        transform.position += moveDirection * 100 * Time.deltaTime;
 
-        if (moveDirection != Vector3.zero)
-        {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(moveDirection), 10 * Time.deltaTime);
-        }
+        //if (moveDirection != Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(moveDirection), 100 * Time.deltaTime);
+        //}
 
-        //Debug.Log(moveDirection);
+        Debug.Log(moveDirection);
     }
 }
